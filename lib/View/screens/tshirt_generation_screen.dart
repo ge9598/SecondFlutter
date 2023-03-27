@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:secondflutter/view/widgets/TshirtGeneratorWidget.dart';
+import 'package:secondflutter/view/widgets/tshirt_generator_widget.dart';
 
 class TShirtGenerationScreen extends StatelessWidget {
 

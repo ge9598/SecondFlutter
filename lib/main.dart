@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:secondflutter/View/screens/TShirtGenerationScreen.dart';
+import 'package:secondflutter/View/screens/tshirt_generation_screen.dart';
 import 'package:secondflutter/View/screens/template_screen.dart';
 // import 'package:secondflutter/screens/CartScreen.dart';
 // import 'package:secondflutter/screens/UserScreen.dart';
@@ -33,7 +33,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
-  final List<Widget> _screens = [    const TShirtGenerationScreen(), const TemplateScreen(),    CartScreen(),    UserScreen(),
+  final List<Widget> _screens = [    const TShirtGenerationScreen(), const TemplateScreen(),
+  // CartScreen(),    UserScreen(),
   ];
   void _onTabTapped(int index) {
     setState(() {

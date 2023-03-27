@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:secondflutter/View/models/tshirt_model.dart';
+import 'package:secondflutter/models/tshirt_model.dart';
 class TShirtGeneratorWidget extends StatefulWidget{
   const TShirtGeneratorWidget({super.key});
 
@@ -20,6 +20,7 @@ class _TShirtGeneratorWidgetState extends State<TShirtGeneratorWidget> {
 
   @override
   Widget build(BuildContext context) {
+    bool isPressed = false;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -98,29 +99,49 @@ class _TShirtGeneratorWidgetState extends State<TShirtGeneratorWidget> {
             ),
           ],
         ),
-
         const SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: () {
-            if(_selectedColor != null && _selectedDesign != null && _selectedSize != null) {
-              TShirtModel tShirt = _generateTShirt(_selectedColor!, _selectedDesign!, _selectedSize!);
-              //TODO: need AddToCart Logic
-              const snackBar = SnackBar(
-                content: Text("Add the item to the Cart!"),
-                duration: Duration(seconds: 2),
-              );
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children:[
+            ElevatedButton(
+              onPressed: () {
 
-            }else{
-              const snackBar = SnackBar(
-                content: Text("Color, Design, and Size must be selected before moving forward!"),
-                duration: Duration(seconds: 2),
-              );
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            }
-          },
-          child: const Text('Add to Cart'),
+                if(_selectedColor != null && _selectedDesign != null && _selectedSize != null) {
+                  TShirtModel tShirt = _generateTShirt(_selectedColor!, _selectedDesign!, _selectedSize!);
+                  //TODO: need AddToCart Logic
+                  const snackBar = SnackBar(
+                    content: Text("Add the item to the Cart!"),
+                    duration: Duration(seconds: 2),
+
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+                }else{
+                  const snackBar = SnackBar(
+                    content: Text("Color, Design, and Size must be selected before moving forward!"),
+                    duration: Duration(seconds: 2),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }
+              },
+
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                        (Set<MaterialState>states){
+                          if(states.contains(MaterialState.pressed)){
+                            return Colors.red;
+                          }else{
+                            return Colors.blue;
+                          }
+                        })
+              ),
+              child: const Text('Add to Cart'),
+            ),
+          ],
         ),
+        const SizedBox(height: 20),
+
+
       ],
     );
   }
