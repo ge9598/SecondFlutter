@@ -1,16 +1,15 @@
-// TODO Implement this library.
 import 'package:flutter/material.dart';
 
-class UserWidget extends StatefulWidget {
-  const UserWidget({super.key});
+class ProductWidget extends StatefulWidget {
+  const ProductWidget({super.key});
 
   @override
   State<StatefulWidget> createState() {
-    return _UserWidgetState();
+    return ProductWidgetState();
   }
 }
 
-class _UserWidgetState extends State<UserWidget> {
+class ProductWidgetState extends State<ProductWidget> {
   @override
   Widget build(BuildContext context) {
     throw UnimplementedError();
