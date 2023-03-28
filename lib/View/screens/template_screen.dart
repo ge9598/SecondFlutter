@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:secondflutter/View/widgets/template_widget.dart';
-class TemplateScreen extends StatelessWidget{
+
+class TemplateScreen extends StatelessWidget {
   const TemplateScreen({super.key});
 
   @override
@@ -8,12 +9,9 @@ class TemplateScreen extends StatelessWidget{
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("Template Screen"),
-
+        title: const Text("Template Screen"),
       ),
       body: const TemplateWidget(),
     );
   }
-
-
 }

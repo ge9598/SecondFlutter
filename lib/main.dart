@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:secondflutter/View/screens/tshirt_generation_screen.dart';
 import 'package:secondflutter/View/screens/template_screen.dart';
-// import 'package:secondflutter/screens/CartScreen.dart';
-// import 'package:secondflutter/screens/UserScreen.dart';
+import 'package:secondflutter/View/screens/cart_screen.dart';
+import 'package:secondflutter/View/screens/user_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,12 +33,22 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
-  final List<Widget> _screens = [    const TShirtGenerationScreen(), const TemplateScreen(),
-  // CartScreen(),    UserScreen(),
+  final List<Widget> _screens = [
+    const TShirtGenerationScreen(),
+    const TemplateScreen(),
+    const CartScreen(),
+    const UserScreen()
+  ];
+  final List<Colors> _theme = [
+    Colors.blue[200],
+    Colors.green[200],
+    Colors.orange[400],
+    Colors.purple[200]
   ];
   void _onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
+      switch(_currentIndex)
     });
   }
 
@@ -51,28 +61,23 @@ class _MyHomePageState extends State<MyHomePage> {
         onTap: _onTabTapped,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.create),
-            label: 'Create',
-            backgroundColor:Colors.black87
-          ),
+              icon: Icon(Icons.create),
+              label: 'Create',
+              backgroundColor: Colors.black87),
           BottomNavigationBarItem(
-            icon: Icon(Icons.photo_library),
-            label: 'Templates',
-            backgroundColor:Colors.black87
-          ),
+              icon: Icon(Icons.photo_library),
+              label: 'Templates',
+              backgroundColor: Colors.black87),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
-            backgroundColor:Colors.black87
-          ),
+              icon: Icon(Icons.shopping_cart),
+              label: 'Cart',
+              backgroundColor: Colors.black87),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-            backgroundColor:Colors.black87
-          ),
+              icon: Icon(Icons.person),
+              label: 'Profile',
+              backgroundColor: Colors.black87),
         ],
       ),
     );
   }
 }
-
