@@ -3,7 +3,7 @@ import 'package:secondflutter/View/widgets/User/user_widget.dart';
 import 'package:secondflutter/View/widgets/User/orders_widget.dart';
 import 'package:secondflutter/View/widgets/User/product_widget.dart';
 
-class UserScreen extends StatelessWidget {
+class UserScreen extends StatefulWidget {
   const UserScreen({super.key});
 
   @override
@@ -17,6 +17,16 @@ class UserScreen extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  State<StatefulWidget> createState() {
+    return _UserScreenState();
+  }
 }
 
-class OrderWidget {}
+class _UserScreenState extends State<UserScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(appBar: buildAppBar(context));
+  }
+}

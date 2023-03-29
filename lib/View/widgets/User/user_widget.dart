@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class UserWidget extends StatefulWidget {
@@ -15,7 +16,7 @@ class _UserWidgetState extends State<UserWidget> {
   String _avatarUrl = 'https://picsum.photos/100';
   Future<void> _changeAvatar() async {
     setState(() {
-      _avatarUrl = 'https://picsum.photos/200';
+      _avatarUrl = 'https://picsum.photos/101';
     });
   }
 
@@ -23,20 +24,33 @@ class _UserWidgetState extends State<UserWidget> {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        onTap: (){
-          Navigator.push(context,
-           MaterialPageRoute(builder: (context) => AvatarScreen(onSelected: _changeAvatar)),)
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => AvatarScreen(onSelected: _changeAvatar)),
+          );
         },
-        leading: const CircleAvatar(
-          backgroundImage: NetworkImage('https://picsum.photos/100'),
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      AvatarScreen(onSelected: _changeAvatar)),
+            );
+          },
+          child: CircleAvatar(
+            backgroundImage: NetworkImage(_avatarUrl),
+          ),
         ),
         title: Text(_name),
         subtitle: Text(_notes),
       ),
     );
   }
-
 }
+
 class AvatarScreen extends StatelessWidget {
   final void Function() onSelected;
 
@@ -46,14 +60,14 @@ class AvatarScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Select Avatar'),
+        title: const Text('Select Avatar'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Tap the avatar to select a new one'),
-            SizedBox(height: 16),
+            SizedBox(height: 20),
             GestureDetector(
               onTap: onSelected,
               child: CircleAvatar(
@@ -65,4 +79,20 @@ class AvatarScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+AppBar buildAppBar(BuildContext context) {
+  final icon = CupertinoIcons.moon_stars;
+  return AppBar(
+    title: Text(
+      "User Screen",
+    ),
+    elevation: 0,
+    actions: [
+      IconButton(
+        icon: Icon(icon),
+        onPressed: () {},
+      )
+    ],
+  );
 }
